@@ -72,5 +72,5 @@ Based on hexagonal architecture, here's how modules are mapped:
 
 ### OpenAPI
 
-The API Schema is in [index.yaml](in/src/main/resources/index.yaml)
+The API Schema is in [index.yaml](infra/src/main/resources/index.yaml)
 
