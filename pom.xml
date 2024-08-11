@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.memoria</groupId>
+        <artifactId>jbom</artifactId>
+        <version>22.3.0</version>
+    </parent>
+
+    <!--suppress MavenRedundantGroupId -->
+    <groupId>io.memoria</groupId>
+    <artifactId>notifications</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
+    <name>${project.groupId}.${project.artifactId}</name>
+    <description>Backend Parent Pom</description>
+    <url>https://memoria.io/notificiations</url>
+    <organization>
+        <name>memoria</name>
+        <url>https://memoria.io</url>
+    </organization>
+
+    <modules>
+        <module>core</module>
+        <module>infra</module>
+        <module>app</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/memoria-io/*</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <properties>
+        <atom.version>22.5.1</atom.version>
+    </properties>
+    <scm>
+        <developerConnection>scm:git:git@github.com:memoria-io/notifications.git</developerConnection>
+    </scm>
+    <dependencyManagement>
+        <dependencies>
+            <!--======================================================================================== -->
+            <!-- Memoria atom Dependencies -->
+            <!--======================================================================================== -->
+            <dependency>
+                <groupId>io.memoria.atom</groupId>
+                <artifactId>web</artifactId>
+                <version>${atom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.memoria.atom</groupId>
+                <artifactId>xjackson</artifactId>
+                <version>${atom.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.helidon</groupId>
+                <artifactId>helidon-bom</artifactId>
+                <version>4.0.8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <!--======================================================================================== -->
+        <!-- Core Dependencies -->
+        <!--======================================================================================== -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+        </dependency>
+        <!--======================================================================================== -->
+        <!-- Testing Dependencies -->
+        <!--======================================================================================== -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

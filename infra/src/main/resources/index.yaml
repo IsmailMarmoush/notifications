@@ -1,0 +1,68 @@
+openapi: "3.0.3"
+info:
+  version: 0.0.1
+  title: Notifications
+servers:
+  - url: http://notifications.memoria.io/
+paths:
+  /notifications/subscriptions:
+    post:
+      summary: "Subscribe to notifications"
+      requestBody:
+        description: Create subscription
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionVM'
+        required: true
+      responses:
+        "200":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionVM'
+    get:
+      summary: "Search subscriptions"
+      parameters:
+        - in: query
+          name: startMillis
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: endMillis
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: "Subscription list"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+components:
+  schemas:
+    SubscriptionVM:
+      type: object
+      required:
+        - userId
+        - frequencyVM
+      properties:
+        userId:
+          type: string
+        frequencyVM:
+          type: string
+          enum:
+            - ONE_SECOND
+            - TEN_SECONDS
+            - ONE_MIN
+            - THIRTY_MIN
+            - ONE_HOUR
+
+
+
