@@ -17,10 +17,9 @@ public class RandomUserEligibilityService implements UserEligibilityService {
 
   @Override
   public List<UserId> filter(List<UserId> userIds) {
+    List<UserId> shuffledUserIds = new ArrayList<>(userIds);
+    Collections.shuffle(shuffledUserIds);
     int subListSize = (int) (userIds.size() * percentage);
-    var subList = userIds.subList(0, subListSize);
-    var result = new ArrayList<>(subList);
-    Collections.shuffle(result);
-    return result;
+    return shuffledUserIds.subList(0, subListSize);
   }
 }
